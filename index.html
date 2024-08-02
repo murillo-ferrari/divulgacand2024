@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidatos 2024</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="divulga-cad">
+        <div class="divulga-cad__search-container">
+            <div class="search-box">
+                <input type="text" class="search-box__input" id="searchBox" placeholder="Procure uma cidade...">
+                <button class="search-box__clear-button" id="clearButton">X</button>
+                <ul class="search-box__suggestions" id="suggestions"></ul>
+            </div>
+            <div class="checkbox-buttons">
+                <label class="checkbox-buttons__label">
+                    <input type="checkbox" name="cargo" value="11" class="checkbox-buttons__input"> Prefeito
+                </label>
+                <label class="checkbox-buttons__label">
+                    <input type="checkbox" name="cargo" value="12" class="checkbox-buttons__input"> Vice-prefeito
+                </label>
+                <label class="checkbox-buttons__label">
+                    <input type="checkbox" name="cargo" value="13" class="checkbox-buttons__input"> Vereador
+                </label>
+            </div>
+        </div>
+        <div class="divulga-cad__candidates-container" id="candidates-container"></div>
+        <button class="divulga-cad__print-button" id="print-button" onclick="printSelected()">Ver Detalhes</button>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
