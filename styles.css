@@ -20,23 +20,25 @@ body {
     gap: 20px;
 }
 
-.card {
+.divulga-cad__candidate-card {
+    align-items: center;
+    gap: 16px;
     border: 1px solid #ddd;
-    padding: 20px;
-    width: calc(50% - 20px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    padding: 20px;
+    width: calc(33% - 20px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     box-sizing: border-box;
     background-color: #fff;
 }
 
-.card h2 {
+.divulga-cad__candidate-card h2 {
     margin: 0;
-    font-size: 1.5em;
+    font-size: 1.25em;
 }
 
-.card p {
+.divulga-cad__candidate-card p {
     margin: 10px 0;
 }
 
@@ -71,8 +73,9 @@ body {
 .divulga-cad__search-container {
     display: flex;
     align-items: center;
+    gap: 20px;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     margin: 20px auto;
 }
 
