@@ -1,6 +1,6 @@
 # Candidatos - Eleições 2024
 
-This is very simple js code to visualize candidates in the Brazil 2024 Election
+Very simple js code to visualize candidates in the Brazil 2024 Election
 
 ## Features
 
