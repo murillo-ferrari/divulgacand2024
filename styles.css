@@ -21,12 +21,13 @@ h1.divulga-Cand__title {
 }
 
 .divulga-Cand__candidates-container {
-    /* display: flex;
-    flex-wrap: wrap; */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(calc(33% - 16px), 1fr));
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(calc(33% - 16px), 1fr)); */
+    display: flex;
+    flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
+    min-width: 310px;
 }
 
 .divulga-Cand__totalCandidates {
@@ -39,13 +40,13 @@ h1.divulga-Cand__title {
 }
 
 .divulga-Cand__candidate-card {
-    align-items: center;
-    gap: 16px;
+    /* align-items: center;
+    gap: 16px; */
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 16px;
-    /* min-width: 300px;
-    width: calc(33% - 16px); */
+    min-width: 300px;
+    width: calc(33% - 16px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     box-sizing: border-box;
