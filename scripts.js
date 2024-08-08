@@ -1,33 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
     const candidatesContainer = document.getElementById("candidates-container");
-    const totalCandidates = document.getElementById('totalCandidates');
-    const printButton = document.getElementById("print-button");
-    const searchBox = document.getElementById('searchBox');
-    const suggestions = document.getElementById('suggestions');
-    const clearButton = document.getElementById('clearButton');
-    const searchResult = [];
+    const totalCandidates     = document.getElementById('totalCandidates');
+    const printButton         = document.getElementById("print-button");
+    const searchBox           = document.getElementById('searchBox');
+    const suggestions         = document.getElementById('suggestions');
+    const clearButton         = document.getElementById('clearButton');
+    const searchResult        = [];
 
     let selectedCandidates = [];
-    let candidatesData = [];
-    let idCargo = null;
-    let codLocalidade = null;
+    let candidatesData     = [];
+    let officeId           = null;
+    let locationCode       = null;
 
     /**
-     * Fetches and displays candidates based on the selected location and cargo.
+     * Fetches and displays candidates based on the selected location and office.
      * 
-     * @param {string} codLocalidade - The code of the selected location.
-     * @param {string} idCargo - The id of the selected cargo.
+     * @param {string} locationCode - The code of the selected location.
+     * @param {string} officeId - The id of the selected office.
      */
     function fetchCandidates() {
-        if (codLocalidade && idCargo) {
-            const endpoint = `https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/listar/2024/${codLocalidade}/2045202024/${idCargo}/candidatos`;
+        if (locationCode && officeId) {
+            const endpoint = `https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/listar/2024/${locationCode}/2045202024/${officeId}/candidatos`;
 
             fetch(endpoint)
                 .then(response => response.json())
                 .then(data => {
                     candidatesData = data.candidatos;
                     candidatesContainer.innerHTML = '';
-                    totalCandidates.innerHTML = candidatesData.length; // Update the count after fetching
+                    totalCandidates.innerHTML = candidatesData.length;
                     candidatesData.forEach(candidate => {
                         const card = document.createElement("div");
                         card.className = "divulga-Cand__candidate-card";
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                             <div class="divulga-Cand__candidate-card--wrapper">                            
                                 <div class="divulga-Cand__candidate-card--personalPicture">
-                                    <img src="https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/2045202024/${candidate.id}/${codLocalidade}" alt="${candidate.nomeUrna}" class="candidate-photo">
+                                    <img src="https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/2045202024/${candidate.id}/${locationCode}" alt="${candidate.nomeUrna}" class="candidate-photo">
                                 </div>
                                 <div class="divulga-Cand__candidate-card--minData">
                                     <p><strong>Partido:</strong> ${candidate.partido.sigla}</p>
@@ -72,17 +72,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const candidateId = event.target.dataset.id;
 
         if (event.target.checked) {
-            if (selectedCandidates.length <= 10) {
+            if (selectedCandidates.length <= 20) {
                 selectedCandidates.push(candidateId);
             } else {
                 event.target.checked = false;
-                alert("Você pode visualizar no máximo 10 candidatos.");
+                alert("Você pode visualizar no máximo 20 candidatos.");
             }
         } else {
             selectedCandidates = selectedCandidates.filter(id => id !== candidateId);
         }
 
-        printButton.style.display = (selectedCandidates.length >= 1 && selectedCandidates.length <= 10) ? "block" : "none";
+        printButton.style.display = (selectedCandidates.length >= 1 && selectedCandidates.length <= 20) ? "block" : "none";
     }
 
     /**
@@ -102,10 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 li.textContent = location;
                 li.addEventListener('click', () => {
                     searchBox.value = location;
-                    codLocalidade = locations[location];
+                    locationCode = locations[location];
                     suggestions.innerHTML = '';
-                    fetchCandidates(); // Fetch candidates when a location is selected
-                    if (idCargo) {
+                    fetchCandidates();
+                    if (officeId) {
                         updateSearchResult();
                     }
                 });
@@ -147,8 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Print selected candidates
     window.printSelected = function () {
-        if (codLocalidade && idCargo) {
-            const detailedEndpoints = selectedCandidates.map(id => `https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/buscar/2024/${codLocalidade}/2045202024/candidato/${id}`);
+        if (locationCode && officeId) {
+            const detailedEndpoints = selectedCandidates.map(id => `https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/buscar/2024/${locationCode}/2045202024/candidato/${id}`);
             Promise.all(detailedEndpoints.map(url => fetch(url).then(response => response.json())))
                 .then(detailedDataArray => {
                     console.log(detailedDataArray);
@@ -164,7 +164,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         const candidateAssets = candidate.bens 
                         ? candidate.bens
                             .sort((a, b) => a.ordem - b.ordem)
-                            .map(node => `<li>${node.ordem}, ${node.descricaoDeTipoDeBem}, ${node.descricao}, ${formatCurrency(node.valor)}</li>`)
+                            .map(node => `
+                                <li>${node.descricaoDeTipoDeBem}</li>
+                                    <ul>
+                                        <li class="assetOrder">${node.ordem}</li>
+                                        <li>${node.descricao}</li>
+                                        <li>${formatCurrency(node.valor)}</li>
+                                    </ul>
+                                </li>
+                            `)
                             .join('') 
                         : '';
 
@@ -214,11 +222,12 @@ document.addEventListener("DOMContentLoaded", () => {
                                         border-radius: 8px; min-width: 310px; }
                                     .card_completeData--nameAndParty { width: 100%; }
                                     .card__completeData--personalPicture { margin-bottom: 16px; }
-                                    .card__completeData--completeData { width: 50%; }
+                                    .card__completeData--completeData { /*width: 50%;*/ }
                                     .card__completeData h2 { margin: 8px; font-size: 1.5em; }
                                     .card__completeData h3 { margin: 0; }
                                     .card__completeData p { margin: 10px 0; }
                                     .candidate-photo { width: 200px; height: auto; display: block; margin: 0 auto; }
+                                    .assetOrder { display: none;}
                                 </style>
                             </head>
                             <body>${printContent.innerHTML}</body>
@@ -248,14 +257,13 @@ document.addEventListener("DOMContentLoaded", () => {
      * @param {Object} data - The fetched data.
      */
     function getUniqueLocations(data) {
-        const locationMap = {};
-        data.forEach(item => {
+        return data.reduce((locationMap, item) => {
             const location = `${item.NOM_LOCALIDADE} (${item.UF})`;
             if (!locationMap[location]) {
                 locationMap[location] = item.COD_LOCALIDADE;
             }
-        });
-        return locationMap;
+            return locationMap;
+        }, {});
     }
 
     document.querySelectorAll('.checkbox-buttons__input').forEach(checkbox => {
@@ -266,10 +274,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         cb.checked = false;
                     }
                 });
-                idCargo = this.value;
+                officeId = this.value;
                 fetchCandidates(); // Fetch candidates when a office is selected
             } else {
-                idCargo = null;
+                officeId = null;
                 candidatesContainer.innerHTML = '';
                 totalCandidates.innerHTML = '--';
             }
@@ -278,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function updateSearchResult() {
-        searchResult.push({ codLocalidade, idCargo });
+        searchResult.push({ locationCode, officeId });
         //console.log(searchResult);
     }
 
@@ -288,8 +296,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.checkbox-buttons__input').forEach(checkbox => {
             checkbox.checked = false;
         });
-        codLocalidade = null;
-        idCargo = null;
+        locationCode = null;
+        officeId = null;
         searchBox.value = '';
         suggestions.innerHTML = '';
         totalCandidates.innerHTML = '--';
