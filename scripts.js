@@ -5,12 +5,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchBox           = document.getElementById('searchBox');
     const suggestions         = document.getElementById('suggestions');
     const clearButton         = document.getElementById('clearButton');
+    const electionYearList    = document.getElementById('electionYearList')
     const searchResult        = [];
+    const electionYearData    = [];
+    const tseElectionData     = [
+        {id:2045202024,ano:2024,nomeEleicao:"Eleições Municipais 2024",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2024-10-06,},
+        {id:2040602022,ano:2022,nomeEleicao:"Eleição Geral Federal 2022",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:2022-10-02,},
+        //{id:2032002020,ano:2020,nomeEleicao:"Eleições Municipais 2020 - AP",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2020-11-14,},
+        {id:2030402020,ano:2020,nomeEleicao:"Eleições Municipais 2020",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2020-11-15,},
+        {id:2022802018,ano:2018,nomeEleicao:"Eleição Geral Federal 2018",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:2018-10-07,},
+        {id:2,ano:2016,nomeEleicao:"Eleições Municipais 2016",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2016-10-02,},
+        {id:680,ano:2014,nomeEleicao:"Eleições Gerais 2014",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:2014-10-05,},
+        {id:1699,ano:2012,nomeEleicao:"Eleição Municipal 2012",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2012-10-07,},
+        {id:14417,ano:2010,nomeEleicao:"Eleições 2010",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:null,},
+        {id:14422,ano:2008,nomeEleicao:"Eleições 2008",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2008-10-05,},
+        {id:14423,ano:2006,nomeEleicao:"Eleições 2006",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:null,},
+        {id:14431,ano:2004,nomeEleicao:"Eleições 2004",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:null,}
+    ]
 
-    let selectedCandidates = [];
-    let candidatesData     = [];
-    let officeId           = null;
-    let locationCode       = null;
+    let selectedCandidates    = [];
+    let candidatesData        = [];
+    let partido               = [];
+    let officeId              = null;
+    let locationCode          = null;
+    let electionYear          = null;
+    let electionCode          = null;
 
     /**
      * Fetches and displays candidates based on the selected location and office.
@@ -20,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     function fetchCandidates() {
         if (locationCode && officeId) {
-            const endpoint = `https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/listar/2024/${locationCode}/2045202024/${officeId}/candidatos`;
+            const endpoint = `https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/listar/${electionYear}/${locationCode}/${electionCode}/${officeId}/candidatos`;
 
             fetch(endpoint)
                 .then(response => response.json())
@@ -37,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                             <div class="divulga-Cand__candidate-card--wrapper">                            
                                 <div class="divulga-Cand__candidate-card--personalPicture">
-                                    <img src="https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/2045202024/${candidate.id}/${locationCode}" alt="${candidate.nomeUrna}" class="candidate-photo">
+                                    <img src="https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/${electionCode}/${candidate.id}/${locationCode}" alt="${candidate.nomeUrna}" class="candidate-photo">
                                 </div>
                                 <div class="divulga-Cand__candidate-card--minData">
                                     <p><strong>Partido:</strong> ${candidate.partido.sigla}</p>
@@ -148,10 +167,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // Print selected candidates
     window.printSelected = function () {
         if (locationCode && officeId) {
-            const detailedEndpoints = selectedCandidates.map(id => `https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/buscar/2024/${locationCode}/2045202024/candidato/${id}`);
+            const detailedEndpoints = selectedCandidates.map(id => `
+                https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/buscar/${electionYear}/${locationCode}/${electionCode}/candidato/${id}`);
+
+            // const detailedIncomeAndExpenses = selectedCandidates.map(numero, id => `
+            //     https://divulgacandcontas.tse.jus.br/divulga/rest/v1/prestador/consulta/2045202024/20024/
+            //         ${locationCode}/${officeId}/50/${numero}/${id}`);
+
             Promise.all(detailedEndpoints.map(url => fetch(url).then(response => response.json())))
                 .then(detailedDataArray => {
                     console.log(detailedDataArray);
+                    console.log(detailedDataArray.map(node => `${partido.sigla}`));
+
+                    // console.log(detailedIncomeAndExpenses);
                     const printContent = document.createElement("div");
                     printContent.className = "container-card__completeData";
                     detailedDataArray.forEach(candidate => {
@@ -266,6 +294,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }, {});
     }
 
+    // Handle election Year selection
+    electionYearList.addEventListener('change', function() {
+        const selectedYear = this.value;
+        const election = tseElectionData.find(el => el.ano == selectedYear);
+    
+        if (election) {
+            electionYear = election.ano;
+            electionCode = election.id;
+            document.querySelectorAll(".print-checkbox").forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            fetchCandidates();
+        } else {
+            console.log('No election data found for the selected year.');
+        }
+        updateElectionData();
+    });
+
+    // Handle office checkboxes
     document.querySelectorAll('.checkbox-buttons__input').forEach(checkbox => {
         checkbox.addEventListener('change', function () {
             if (this.checked) {
@@ -275,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
                 officeId = this.value;
-                fetchCandidates(); // Fetch candidates when a office is selected
+                fetchCandidates();
             } else {
                 officeId = null;
                 candidatesContainer.innerHTML = '';
@@ -286,18 +333,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function updateSearchResult() {
-        searchResult.push({ locationCode, officeId });
-        //console.log(searchResult);
+        searchResult.push({ locationCode, officeId});
+    }
+
+    function updateElectionData() {
+        electionYearData.push({ electionYear, electionCode});
     }
 
     clearButton.addEventListener('click', clearCandidates);
 
     function clearCandidates() {
+        const electionYearSelect = electionYearChooser;
         document.querySelectorAll('.checkbox-buttons__input').forEach(checkbox => {
             checkbox.checked = false;
         });
+        electionYearSelect.selectedIndex = 0
         locationCode = null;
         officeId = null;
+        electionCode = null;
         searchBox.value = '';
         suggestions.innerHTML = '';
         totalCandidates.innerHTML = '--';

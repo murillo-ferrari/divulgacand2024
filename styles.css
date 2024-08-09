@@ -112,13 +112,22 @@ h1.divulga-Cand__title {
     }
 }
 
+#electionYearList {
+    background-color: #fff; 
+    cursor: pointer;
+    margin: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
 .search-box {
     position: relative;
     flex: 1;
     display: flex; 
 }
 
-.search-box__input {
+.search-box__input,
+#electionYearList {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
