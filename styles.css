@@ -10,7 +10,7 @@ body {
 
 .divulga-Cand {
     width: 100%;
-    max-width: 1200px; 
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -101,19 +101,8 @@ h1.divulga-Cand__title {
     margin: 20px auto;
 }
 
-@media (max-width: 660px) {
-    .divulga-Cand__search-container {
-        display: block;
-        max-width: 310px;
-    }
-
-    .checkbox-buttons {
-        margin-top: 8px;
-    }
-}
-
 #electionYearList {
-    background-color: #fff; 
+    background-color: #fff;
     cursor: pointer;
     margin: 0;
     border-top-left-radius: 8px;
@@ -123,7 +112,12 @@ h1.divulga-Cand__title {
 .search-box {
     position: relative;
     flex: 1;
-    display: flex; 
+    display: flex;
+}
+
+.search-box__input {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .search-box__input,
@@ -137,15 +131,13 @@ h1.divulga-Cand__title {
 .search-box__clear-button {
     padding: 8px;
     border: 1px solid #ccc;
-    border-left: none;
     background-color: #ddd;
     cursor: pointer;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-radius: 8px;
 }
 
 .search-box__suggestions {
-    font-size: 14px;
+    font-size: 12px;
     list-style-type: none;
     padding: 0;
     margin-top: 32px;
@@ -154,9 +146,24 @@ h1.divulga-Cand__title {
     max-height: 150px;
     overflow-y: auto;
     position: absolute;
-    width: 92.8%;
+    width: 98.8%;
     background-color: #fff;
     z-index: 1000;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.search-box__suggestions::-webkit-scrollbar {
+    width: 4px;
+}
+
+.search-box__suggestions::-webkit-scrollbar-thumb {
+    background-color: #C00;
+    border-radius: 2px;
+}
+
+.search-box__suggestions::-webkit-scrollbar-track {
+    background-color: gray !important;
 }
 
 .search-box__suggestions li {
@@ -183,4 +190,35 @@ h1.divulga-Cand__title {
 
 .checkbox-buttons__input {
     margin-right: 5px;
+}
+
+@media (max-width: 660px) {
+    .divulga-Cand__search-container {
+        display: block;
+        max-width: 310px;
+    }
+
+    .checkbox-buttons {
+        margin-top: 8px;
+    }
+
+    button#clearButton {
+        position: absolute;
+        right: 20px;
+        top: 100px;
+    }
+
+    input#searchBox,
+    #electionYearList {
+        border-radius: 8px;
+    }
+
+    .electionYear {
+        margin-bottom: 16px;
+        border-radius: 8px;
+    }
+
+    .search-box__suggestions {
+        border-radius: unset;
+    }
 }

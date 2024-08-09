@@ -9,18 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchResult        = [];
     const electionYearData    = [];
     const tseElectionData     = [
-        {id:2045202024,ano:2024,nomeEleicao:"Eleições Municipais 2024",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2024-10-06,},
-        {id:2040602022,ano:2022,nomeEleicao:"Eleição Geral Federal 2022",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:2022-10-02,},
-        //{id:2032002020,ano:2020,nomeEleicao:"Eleições Municipais 2020 - AP",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2020-11-14,},
-        {id:2030402020,ano:2020,nomeEleicao:"Eleições Municipais 2020",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2020-11-15,},
-        {id:2022802018,ano:2018,nomeEleicao:"Eleição Geral Federal 2018",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:2018-10-07,},
-        {id:2,ano:2016,nomeEleicao:"Eleições Municipais 2016",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2016-10-02,},
-        {id:680,ano:2014,nomeEleicao:"Eleições Gerais 2014",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:2014-10-05,},
-        {id:1699,ano:2012,nomeEleicao:"Eleição Municipal 2012",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2012-10-07,},
-        {id:14417,ano:2010,nomeEleicao:"Eleições 2010",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:null,},
-        {id:14422,ano:2008,nomeEleicao:"Eleições 2008",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:2008-10-05,},
-        {id:14423,ano:2006,nomeEleicao:"Eleições 2006",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:null,},
-        {id:14431,ano:2004,nomeEleicao:"Eleições 2004",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:null,}
+        {id:2045202024,ano:2024,nomeEleicao:"Eleições Municipais 2024",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2024-10-06"},
+        {id:2040602022,ano:2022,nomeEleicao:"Eleição Geral Federal 2022",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:"2022-10-02"},
+        //{id:2032002020,ano:2020,nomeEleicao:"Eleições Municipais 2020 - AP",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2020-11-14"},
+        {id:2030402020,ano:2020,nomeEleicao:"Eleições Municipais 2020",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2020-11-15"},
+        {id:2022802018,ano:2018,nomeEleicao:"Eleição Geral Federal 2018",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:"2018-10-07"},
+        {id:2,ano:2016,nomeEleicao:"Eleições Municipais 2016",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2016-10-02"},
+        {id:680,ano:2014,nomeEleicao:"Eleições Gerais 2014",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:"2014-10-05"},
+        {id:1699,ano:2012,nomeEleicao:"Eleição Municipal 2012",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2012-10-07"},
+        {id:14417,ano:2010,nomeEleicao:"Eleições 2010",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:null},
+        {id:14422,ano:2008,nomeEleicao:"Eleições 2008",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2008-10-05"},
+        {id:14423,ano:2006,nomeEleicao:"Eleições 2006",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:null},
+        {id:14431,ano:2004,nomeEleicao:"Eleições 2004",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:null}
     ]
 
     let selectedCandidates    = [];
@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearButton.addEventListener('click', clearCandidates);
 
     function clearCandidates() {
-        const electionYearSelect = electionYearChooser;
+        const electionYearSelect = electionYearList;
         document.querySelectorAll('.checkbox-buttons__input').forEach(checkbox => {
             checkbox.checked = false;
         });
