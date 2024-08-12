@@ -1,10 +1,16 @@
 # Candidatos - Eleições 2024
 
-Very simple js code to visualize candidates in the Brazil 2024 Election
+Simples código em JavaScript para visualizar dados de candidatos nas Eleições do Brasil
 
-## Features
+## Recursos
 
-- Cities search, with suggestion, using real data provided by TSE (Tribunal Superior Eleitoral) - id, name, state
-- Ability to filter the candidates by office (mayor, deputy mayor, councilors)
-- Resumed data of the candidates
-- Complete data of the candidates
+- Busca por cidade (com sugestões), usando dados reais fornecidos pelo TSE (Tribunal Superior Eleitoral)
+- Capacidade de filtrar os candidatos pelo cargo (prefeito, vice-prefeito, vereador)
+- Perfil resumido dos candidatos
+- Perfil completo dos candidatos -- precisa ser refatorado --
+
+## To-Do
+- Dados financeiros (receitas e despesas) dos candidatos
+- Trocar o código fixo de anos pelo requisitado direto ao endpoint do TSE - e atualizar o json com essas informações
+- Associar o tipo de eleição ao seletor de ano
+- Exibir os cargos de forma dinâmica, a partir do tipo de eleção
