@@ -1,22 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const candidatesContainer = document.getElementById("candidates-container");
-    const totalCandidates     = document.getElementById('totalCandidates');
-    const printButton         = document.getElementById("print-button");
-    const searchBox           = document.getElementById('searchBox');
-    const suggestions         = document.getElementById('suggestions');
-    const clearButton         = document.getElementById('clearButton');
-    const electionYearList    = document.getElementById('electionYearList')
-    const searchResult        = [];
-    const electionYearData    = [];
-
-    let selectedCandidates    = [];
-    let candidatesData        = [];
-    let partyNumber           = [];
-    let officeId              = null;
-    let locationCode          = null;
-    let electionYear          = null;
-    let electionCode          = null;
-
     /**
      * Fetches and displays candidates based on the selected location and office.
      * 
