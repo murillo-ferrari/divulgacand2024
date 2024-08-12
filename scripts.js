@@ -8,24 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const electionYearList    = document.getElementById('electionYearList')
     const searchResult        = [];
     const electionYearData    = [];
-    const tseElectionData     = [
-        {id:2045202024,ano:2024,nomeEleicao:"Eleições Municipais 2024",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2024-10-06"},
-        {id:2040602022,ano:2022,nomeEleicao:"Eleição Geral Federal 2022",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:"2022-10-02"},
-        //{id:2032002020,ano:2020,nomeEleicao:"Eleições Municipais 2020 - AP",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2020-11-14"},
-        {id:2030402020,ano:2020,nomeEleicao:"Eleições Municipais 2020",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2020-11-15"},
-        {id:2022802018,ano:2018,nomeEleicao:"Eleição Geral Federal 2018",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:"2018-10-07"},
-        {id:2,ano:2016,nomeEleicao:"Eleições Municipais 2016",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2016-10-02"},
-        {id:680,ano:2014,nomeEleicao:"Eleições Gerais 2014",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:"2014-10-05"},
-        {id:1699,ano:2012,nomeEleicao:"Eleição Municipal 2012",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2012-10-07"},
-        {id:14417,ano:2010,nomeEleicao:"Eleições 2010",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:null},
-        {id:14422,ano:2008,nomeEleicao:"Eleições 2008",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:"2008-10-05"},
-        {id:14423,ano:2006,nomeEleicao:"Eleições 2006",tipoEleicao:"O",tipoAbrangencia:"F",dataEleicao:null},
-        {id:14431,ano:2004,nomeEleicao:"Eleições 2004",tipoEleicao:"O",tipoAbrangencia:"M",dataEleicao:null}
-    ]
 
     let selectedCandidates    = [];
     let candidatesData        = [];
-    let partido               = [];
+    let partyNumber           = [];
     let officeId              = null;
     let locationCode          = null;
     let electionYear          = null;
@@ -70,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         `;
                         candidatesContainer.appendChild(card);
                     });
-
                     document.querySelectorAll(".print-checkbox").forEach(checkbox => {
                         checkbox.addEventListener("change", handleCheckboxChange);
                     });
@@ -83,13 +68,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /**
-     * Handles candidate checkbox changes.
-     * 
-     * @param {Event} event - The event object.
-     */
+    * Handles the change event of the checkbox elements, adding or removing candidate IDs from the selectedCandidates array.
+    *
+    * Also, updates the visibility of the print button based on the number of selected candidates.
+    *
+    * @param {Event} event - The change event triggered by the checkbox.
+    */
     function handleCheckboxChange(event) {
         const candidateId = event.target.dataset.id;
-
+    
         if (event.target.checked) {
             if (selectedCandidates.length <= 20) {
                 selectedCandidates.push(candidateId);
@@ -100,10 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             selectedCandidates = selectedCandidates.filter(id => id !== candidateId);
         }
-
+    
         printButton.style.display = (selectedCandidates.length >= 1 && selectedCandidates.length <= 20) ? "block" : "none";
-    }
-
+   }
+   
     /**
      * Displays location suggestions.
      * 
@@ -111,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * @param {string} query - The search query.
      */
     function displaySuggestions(locations, query) {
-        suggestions.innerHTML = '';
+        clearUI();
         if (query.length >= 2) {
             const filteredLocations = Object.keys(locations).filter(location =>
                 removeDiacritics(location.toLowerCase()).includes(removeDiacritics(query.toLowerCase())));
@@ -122,46 +109,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 li.addEventListener('click', () => {
                     searchBox.value = location;
                     locationCode = locations[location];
-                    suggestions.innerHTML = '';
+                    clearUI();
                     fetchCandidates();
                     if (officeId) {
-                        updateSearchResult();
+                        updateData(searchResult, { locationCode, officeId });
                     }
                 });
                 suggestions.appendChild(li);
             });
         }
-    }
-
-    /**
-     * Removes diacritics from a string.
-     * 
-     * @param {string} str - The input string.
-     * @returns {string} - The string without diacritics.
-     */
-    function removeDiacritics(str) {
-        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    }
- 
-    /**
-     * Convert a date string to brazilian format
-     * 
-     * @param {string} dateString - The input string.
-     * @returns {string} - The string in brazilian format.
-     */
-    function formatDate(dateString) {
-        const [year, month, day] = dateString.split('-');
-        return `${day}/${month}/${year}`;
-    }
-
-    /**
-     * Convert a numeral string to brazilian currency format
-     * 
-     * @param {string} value - The input string.
-     * @returns {string} - The string in brazilian currency format.
-     */
-    function formatCurrency(value) {
-        return typeof value === 'number' ? value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) : '';
     }
 
     // Print selected candidates
@@ -172,12 +128,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // const detailedIncomeAndExpenses = selectedCandidates.map(numero, id => `
             //     https://divulgacandcontas.tse.jus.br/divulga/rest/v1/prestador/consulta/2045202024/20024/
-            //         ${locationCode}/${officeId}/50/${numero}/${id}`);
+            //         ${locationCode}/${officeId}/$(partyNumber}/${numero}/${id}`);
 
             Promise.all(detailedEndpoints.map(url => fetch(url).then(response => response.json())))
                 .then(detailedDataArray => {
                     console.log(detailedDataArray);
-                    console.log(detailedDataArray.map(node => `${partido.sigla}`));
 
                     // console.log(detailedIncomeAndExpenses);
                     const printContent = document.createElement("div");
@@ -271,7 +226,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Fetch and handle location suggestions
+    /**
+     * Fetches and handles location suggestions.
+     * 
+     * @param {Object} data - The fetched data.
+     * @returns {Object} uniqueLocations - An object containing unique locations as keys and their corresponding codes as values.
+     */
     fetch('municipios-2024.json')
         .then(response => response.json())
         .then(data => {
@@ -297,19 +257,25 @@ document.addEventListener("DOMContentLoaded", () => {
     // Handle election Year selection
     electionYearList.addEventListener('change', function() {
         const selectedYear = this.value;
-        const election = tseElectionData.find(el => el.ano == selectedYear);
-    
-        if (election) {
-            electionYear = election.ano;
-            electionCode = election.id;
-            document.querySelectorAll(".print-checkbox").forEach(checkbox => {
-                checkbox.checked = false;
+
+        fetch('election-year.json')
+            .then(response => response.json())
+            .then(data => {
+                const election = data.find(el => el.ano == selectedYear);
+
+                if (election) {
+                    electionYear = election.ano;
+                    electionCode = election.id;
+                    clearCheckboxes('.print-checkbox');;
+                    fetchCandidates();
+                    updateData(electionYearData, { electionYear, electionCode });
+                } else {
+                    console.log('No election data found for the selected year.');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching election data:', error);
             });
-            fetchCandidates();
-        } else {
-            console.log('No election data found for the selected year.');
-        }
-        updateElectionData();
     });
 
     // Handle office checkboxes
@@ -324,38 +290,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 officeId = this.value;
                 fetchCandidates();
             } else {
-                officeId = null;
-                candidatesContainer.innerHTML = '';
-                totalCandidates.innerHTML = '--';
+                clearCandidates();
             }
-            updateSearchResult();
+            updateData(searchResult, { locationCode, officeId });
         });
     });
 
-    function updateSearchResult() {
-        searchResult.push({ locationCode, officeId});
-    }
-
-    function updateElectionData() {
-        electionYearData.push({ electionYear, electionCode});
-    }
-
     clearButton.addEventListener('click', clearCandidates);
 
+    // Call utils function to clear the candidates content
     function clearCandidates() {
-        const electionYearSelect = electionYearList;
-        document.querySelectorAll('.checkbox-buttons__input').forEach(checkbox => {
-            checkbox.checked = false;
-        });
-        electionYearSelect.selectedIndex = 0
-        locationCode = null;
-        officeId = null;
-        electionCode = null;
-        searchBox.value = '';
-        suggestions.innerHTML = '';
-        totalCandidates.innerHTML = '--';
-        candidatesContainer.innerHTML = '';
-        selectedCandidates.length = 0;
-        printButton.style.display = 'none';
+        clearCheckboxes('.checkbox-buttons__input');
+        resetDropdown(electionYearList);
+        resetVariables();
+        clearInputs();
+        clearUI();
     }
+    
 });
