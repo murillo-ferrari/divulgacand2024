@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Candidatos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="candidatesPerCity">
+        <h1>Consulta de Candidatos por Estado e Cidade</h1>
+        <label for="ufSelect">Selecione o Estado:</label>
+        <select id="ufSelect">
+            <option value="">Escolha um estado</option>
+        </select>
+        <div class="filterCities">
+            <input type="checkbox" id="filterCheckbox">Mostrar cidades com 1 candidato
+        </div>
+        <div id="loader" class="loader" style="display: none;"></div>
+        <ul id="cityCandidatesList"></ul>
+        
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

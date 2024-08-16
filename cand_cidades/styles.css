@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    max-width: 100%;
+    min-width: 440px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.candidatesPerCity {
+    display: grid;
+    justify-content: center;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+}
+
+label {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+select {
+    font-size: 16px;
+    padding: 5px;
+    margin-bottom: 20px;
+    width: 80%;
+    border-radius: 8px;
+}
+
+.filterLabel {
+    font-size: 12px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+li ul {
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+li ul li {
+    font-size: 14px;
+}
+
+.single-candidate {
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+/* CSS for the spinner */
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

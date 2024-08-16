@@ -8,21 +8,20 @@ body {
     padding: 16px;
 }
 
-.divulga-Cand {
+.divulga-cand {
     width: 100%;
     max-width: 1200px;
+    min-width: 420px;
     margin: 0 auto;
 }
 
-h1.divulga-Cand__title {
+.divulga-cand__title {
     margin: 0 auto !important;
     text-align: center;
     min-width: 310px;
 }
 
-.divulga-Cand__candidates-container {
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(calc(33% - 16px), 1fr)); */
+.divulga-cand__candidates-container {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
@@ -30,7 +29,7 @@ h1.divulga-Cand__title {
     min-width: 310px;
 }
 
-.divulga-Cand__totalCandidates {
+.divulga-cand__total-candidates {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,9 +38,7 @@ h1.divulga-Cand__title {
     margin: 8px;
 }
 
-.divulga-Cand__candidate-card {
-    /* align-items: center;
-    gap: 16px; */
+.divulga-cand__candidate-card {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 16px;
@@ -53,12 +50,12 @@ h1.divulga-Cand__title {
     background-color: #fff;
 }
 
-.divulga-Cand__candidate-card h2 {
+.divulga-cand__candidate-card h2 {
     margin: 8px;
     font-size: 1.25em;
 }
 
-.divulga-Cand__candidate-card p {
+.divulga-cand__candidate-card p {
     margin: 10px 0;
 }
 
@@ -77,7 +74,7 @@ h1.divulga-Cand__title {
     border-radius: 8px;
 }
 
-.divulga-Cand__print-button {
+.divulga-cand__print-button {
     position: fixed;
     top: 16px;
     right: 16px;
@@ -91,7 +88,7 @@ h1.divulga-Cand__title {
     z-index: 1000;
 }
 
-.divulga-Cand__search-container {
+.divulga-cand__search-container {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -101,7 +98,7 @@ h1.divulga-Cand__title {
     margin: 20px auto;
 }
 
-#electionYearList {
+.divulga-cand__election-year select {
     background-color: #fff;
     cursor: pointer;
     margin: 0;
@@ -109,26 +106,26 @@ h1.divulga-Cand__title {
     border-bottom-left-radius: 8px;
 }
 
-.search-box {
+.divulga-cand__search-box {
     position: relative;
     flex: 1;
     display: flex;
 }
 
-.search-box__input {
+.divulga-cand__search-input {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
 
-.search-box__input,
-#electionYearList {
+.divulga-cand__search-input,
+.divulga-cand__election-year select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
-.search-box__clear-button {
+.divulga-cand__clear-button {
     padding: 8px;
     border: 1px solid #ccc;
     background-color: #ddd;
@@ -136,7 +133,7 @@ h1.divulga-Cand__title {
     border-radius: 8px;
 }
 
-.search-box__suggestions {
+.divulga-cand__search-suggestions {
     font-size: 12px;
     list-style-type: none;
     padding: 0;
@@ -153,72 +150,80 @@ h1.divulga-Cand__title {
     border-bottom-right-radius: 8px;
 }
 
-.search-box__suggestions::-webkit-scrollbar {
+.divulga-cand__search-suggestions::-webkit-scrollbar {
     width: 4px;
 }
 
-.search-box__suggestions::-webkit-scrollbar-thumb {
+.divulga-cand__search-suggestions::-webkit-scrollbar-thumb {
     background-color: #C00;
     border-radius: 2px;
 }
 
-.search-box__suggestions::-webkit-scrollbar-track {
+.divulga-cand__search-suggestions::-webkit-scrollbar-track {
     background-color: gray !important;
 }
 
-.search-box__suggestions li {
+.divulga-cand__search-suggestions li {
     padding: 8px;
     cursor: pointer;
 }
 
-.search-box__suggestions li:hover {
+.divulga-cand__search-suggestions li:hover {
     background-color: #e9ecef;
 }
 
-.checkbox-buttons {
+.divulga-cand__checkbox-buttons {
     display: flex;
     align-items: center;
 }
 
-.checkbox-buttons__label {
+.divulga-cand__checkbox-label {
     margin-right: 8px;
 }
 
-.checkbox-buttons__label:last-child {
+.divulga-cand__checkbox-label:last-child {
     margin-right: 0;
 }
 
-.checkbox-buttons__input {
+.divulga-cand__checkbox-input {
     margin-right: 5px;
 }
 
 @media (max-width: 660px) {
-    .divulga-Cand__search-container {
+    body {
+        min-width: 420px;
+    }
+    .divulga-cand__search-container {
+        position: relative;
         display: block;
         max-width: 310px;
     }
 
-    .checkbox-buttons {
+    .divulga-cand__checkbox-buttons {
         margin-top: 8px;
     }
 
     button#clearButton {
         position: absolute;
-        right: 20px;
-        top: 100px;
+        right: -42px;
+        top: 28px;
     }
 
     input#searchBox,
-    #electionYearList {
+    .divulga-cand__election-year select {
         border-radius: 8px;
     }
 
-    .electionYear {
+    .divulga-cand__election-year {
         margin-bottom: 16px;
         border-radius: 8px;
     }
 
-    .search-box__suggestions {
+    .divulga-cand__search-suggestions {
         border-radius: unset;
     }
+}
+
+li.asset-order {
+    display: none;
 }

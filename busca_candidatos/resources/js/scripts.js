@@ -17,16 +17,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     totalCandidates.innerHTML = candidatesData.length;
                     candidatesData.forEach(candidate => {
                         const card = document.createElement("div");
-                        card.className = "divulga-Cand__candidate-card";
+                        card.className = "divulga-cand__candidate-card";
                         card.innerHTML = `
-                            <div class="divulga-Cand__candidate-card--name">
+                            <div class="divulga-cand__candidate-card-name">
                                 <h2>${candidate.nomeUrna}</h2>
                             </div>
-                            <div class="divulga-Cand__candidate-card--wrapper">                            
-                                <div class="divulga-Cand__candidate-card--personalPicture">
+                            <div class="divulga-cand__candidate-card-wrapper">                            
+                                <div class="divulga-cand__candidate-card-personal-picture">
                                     <img src="https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/${electionCode}/${candidate.id}/${locationCode}" alt="${candidate.nomeUrna}" class="candidate-photo">
                                 </div>
-                                <div class="divulga-Cand__candidate-card--minData">
+                                <div class="divulga-cand__candidate-card-min-data">
                                     <p><strong>Partido:</strong> ${candidate.partido.sigla}</p>
                                     <p><strong>Número:</strong> ${candidate.numero}</p>
                                     <label class="print-label">
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // console.log(detailedIncomeAndExpenses);
                     const printContent = document.createElement("div");
-                    printContent.className = "container-card__completeData";
+                    printContent.className = "container-card__complete-data";
                     detailedDataArray.forEach(candidate => {
                         const formattedDate = formatDate(candidate.dataDeNascimento);
                         // const formattedTotalExpense = formatCurrency(candidate.gastoCampanha);
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             .map(node => `
                                 <li>${node.descricaoDeTipoDeBem}</li>
                                     <ul>
-                                        <li class="assetOrder">${node.ordem}</li>
+                                        <li class="asset-order">${node.ordem}</li>
                                         <li>${node.descricao}</li>
                                         <li>${formatCurrency(node.valor)}</li>
                                     </ul>
@@ -142,15 +142,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         : '';
 
                         const candidateCard = `
-                            <div class="card__completeData">
-                                <div class="card_completeData--nameAndParty">
+                            <div class="card__complete-data">
+                                <div class="card__complete-data-name-and-party">
                                     <h2>${candidate.nomeUrna} - ${candidate.numero}</h2>
                                 </div>
-                                <div class="card__completeData--wrapper">
-                                    <div class="card__completeData--personalPicture">
+                                <div class="card__complete-data-wrapper">
+                                    <div class="card__complete-data-personal-picture">
                                         <img src="${candidate.fotoUrl || 'https://via.placeholder.com/150'}" alt="${candidate.nomeUrna}" class="candidate-photo">
                                     </div>
-                                    <div class="card__completeData--completeData">
+                                    <div class="card__complete-data-complete-data">
                                         <h3>Partido: ${candidate.partido.sigla}</h3>
                                         <p><strong>Gênero:</strong> ${candidate.descricaoSexo}</p>
                                         <p><strong>Naturalidade:</strong> ${candidate.nomeMunicipioNascimento}, ${candidate.sgUfNascimento}</p>
@@ -181,29 +181,29 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <style>
                                     body { font-family: Arial, sans-serif; padding: 20px; display: grid; 
                                         grid-template-columns: repeat(auto-fit, minmax(calc(33% - 16px), 1fr)); min-width: 310px; }
-                                    .container-card__completeData { display: flex; }
-                                    .card__completeData { 
+                                    .container-card__complete-data { display: flex; }
+                                    .card__complete-data { 
                                      border: 1px solid #ddd; padding: 20px; margin: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
                                         border-radius: 8px; min-width: 310px; }
-                                    .card_completeData--nameAndParty { width: 100%; }
-                                    .card__completeData--personalPicture { margin-bottom: 16px; }
-                                    .card__completeData--completeData { /*width: 50%;*/ }
-                                    .card__completeData h2 { margin: 8px; font-size: 1.5em; }
-                                    .card__completeData h3 { margin: 0; }
-                                    .card__completeData p { margin: 10px 0; }
-                                    .candidate-photo { width: 200px; height: auto; display: block; margin: 0 auto; }
-                                    .assetOrder { display: none;}
+                                    .card__complete-data-name-and-party { width: 100%; }
+                                    .card__complete-data-personal-picture { margin-bottom: 16px; }
+                                    .card__complete-data-complete-data { /*width: 50%;*/ }
+                                    .card__complete-data h2 { margin: 8px; font-size: 1.5em; }
+                                    .card__complete-data h3 { margin-top: 0; }
+                                    .card__complete-data p { margin: 0 0 8px 0; line-height: 1.5; }
+                                    .candidate-photo { max-width: 150px; margin: 8px 8px; border-radius: 4px; }
+                                    li.asset-order { display: none; }
                                 </style>
                             </head>
                             <body>${printContent.innerHTML}</body>
                         </html>
                     `);
-                    printWindow.document.close();
-                    //printWindow.print();
+                    // printWindow.document.close();
+                    // printWindow.print();
                 })
                 .catch(error => {
-                    console.error("Erro ao buscar dados detalhados:", error);
-                    alert("Ocorreu um erro ao buscar dados detalhados. Por favor, tente novamente.");
+                    console.error("Erro ao buscar detalhes dos candidatos:", error);
+                    alert("Ocorreu um erro ao buscar detalhes dos candidatos. Por favor, tente novamente.");
                 });
         }
     };
@@ -228,9 +228,12 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     function getUniqueLocations(data) {
         return data.reduce((locationMap, item) => {
+            // Adiciona um zero à esquerda se o COD_LOCALIDADE tiver menos de 5 dígitos
+            const codLocalidade = item.COD_LOCALIDADE.toString().padStart(5, '0');
+            
             const location = `${item.NOM_LOCALIDADE} (${item.UF})`;
             if (!locationMap[location]) {
-                locationMap[location] = item.COD_LOCALIDADE;
+                locationMap[location] = codLocalidade;
             }
             return locationMap;
         }, {});
@@ -252,19 +255,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     fetchCandidates();
                     updateData(electionYearData, { electionYear, electionCode });
                 } else {
-                    console.log('No election data found for the selected year.');
+                    console.log('Nenhum dado eleitoral encontrado para o ano selecionado.');
                 }
             })
             .catch(error => {
-                console.error('Error fetching election data:', error);
+                console.error('Erro ao buscar dados eleitorais:', error);
             });
     });
 
     // Handle office checkboxes
-    document.querySelectorAll('.checkbox-buttons__input').forEach(checkbox => {
+    document.querySelectorAll('.divulga-cand__checkbox-input').forEach(checkbox => {
         checkbox.addEventListener('change', function () {
             if (this.checked) {
-                document.querySelectorAll('.checkbox-buttons__input').forEach(cb => {
+                document.querySelectorAll('.divulga-cand__checkbox-input').forEach(cb => {
                     if (cb !== this) {
                         cb.checked = false;
                     }
@@ -282,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Call utils function to clear the candidates content
     function clearCandidates() {
-        clearCheckboxes('.checkbox-buttons__input');
+        clearCheckboxes('.divulga-cand__checkbox-input');
         resetDropdown(electionYearList);
         resetVariables();
         clearInputs();

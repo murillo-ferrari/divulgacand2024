@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidatos TSE</title>
+    <link rel="stylesheet" href="resources/css/styles.css">
+</head>
+
+<body>
+    <div class="divulga-cand">
+        <h1 class="divulga-cand__title">Candidatos - TSE</h1>
+        <div class="divulga-cand__search-container">
+            <div class="divulga-cand__election-year">
+                <select id="electionYearList">
+                    <option value="" disabled selected>Ano da Eleição</option>
+                    <option value="2024">2024</option>
+                    <option value="2020">2020</option>
+                    <option value="2016">2016</option>
+                    <option value="2012">2012</option>
+                    <option value="2008">2008</option>
+                    <option value="2004">2004</option>
+                </select>
+            </div>
+            <div class="divulga-cand__search-box">
+                <input type="text" class="divulga-cand__search-input" id="searchBox" placeholder="Procure uma cidade...">
+                <ul class="divulga-cand__search-suggestions" id="suggestions"></ul>
+            </div>
+            <div class="divulga-cand__checkbox-buttons">
+                <label class="divulga-cand__checkbox-label">
+                    <input type="checkbox" name="office" value="11" class="divulga-cand__checkbox-input"> Prefeito
+                </label>
+                <label class="divulga-cand__checkbox-label">
+                    <input type="checkbox" name="office" value="12" class="divulga-cand__checkbox-input"> Vice-prefeito
+                </label>
+                <label class="divulga-cand__checkbox-label">
+                    <input type="checkbox" name="office" value="13" class="divulga-cand__checkbox-input"> Vereador
+                </label>
+            </div>
+            <button class="divulga-cand__clear-button" id="clearButton">X</button>
+        </div>
+        <div class="divulga-cand__total-candidates">
+            <p>Total de candidatos: </p><span id="totalCandidates"></span>
+        </div>
+        <div class="divulga-cand__candidates-container" id="candidates-container"></div>
+        <button class="divulga-cand__print-button" id="print-button" onclick="printSelected()">Ver Detalhes</button>
+    </div>
+    <script src="resources/js/utils.js"></script>
+    <script src="resources/js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    max-width: 100%;
+    min-width: 440px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    width: 100%;
+    margin-top: 0;
+}
+
+.candidatesContainer {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    grid-template-rows: 0.3fr 1.7fr;
+    grid-auto-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "dataBaseUpdate resumoCandidaturas"
+        "candidaturasPorEstado candidaturasPorEstado";
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+}
+
+
+.candidaturasPorEstado {
+    grid-area: candidaturasPorEstado;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    margin: 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dataBaseUpdate {
+    grid-area: dataBaseUpdate;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.resumoCandidaturas {
+    grid-area: resumoCandidaturas;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.UFsWrapper {
+    flex: 1 1 calc(33% - 10px);
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #E6E6E6;
+    border-right: 1px solid #E6E6E6;
+}
+
+.UFsData {
+    display: flex;
+    gap: 10px;
+}
+
+.total {
+    font-weight: bold;
+}
