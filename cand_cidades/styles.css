@@ -17,6 +17,11 @@ h1 {
     border-radius: 8px;
 }
 
+.candidate__deputy {
+    font-size: 12px;
+    font-style: italic;
+}
+
 label {
     font-size: 18px;
     margin-right: 10px;

@@ -52,6 +52,7 @@ async function fetchCandidates(selectedState, cities) {
         filterCheckbox.disabled = true;
 
         cityCandidatesList.innerHTML = ''; // Limpa a lista anterior
+        cityCandidatesList.style.display = 'none'; // Oculta a lista de cidades/candidatos
         const processedCities = new Set(); // Para rastrear cidades já processadas
 
         // Itera sobre as cidades filtrando pelo estado selecionado
@@ -98,14 +99,34 @@ async function fetchCandidates(selectedState, cities) {
                 listItem.classList.add('single-candidate');
             }
 
-            // Se não houver candidatos, aplica uma classe para ocultar a cidade
             if (candidateCount > 0) {
                 const subList = document.createElement('ul');
-                candidatesData.candidatos.forEach(candidate => {
+                for (const candidate of candidatesData.candidatos) {
+                    //console.log(candidate);
                     const subListItem = document.createElement('li');
-                    subListItem.textContent = `${candidate.nomeUrna} (${candidate.numero})`;
+                    subListItem.classList.add('candidate');
+                    subListItem.textContent = `${candidate.nomeUrna} (${candidate.partido.sigla})`;
+
+                    // Fetch the details for deputy candidates
+                    const detailedEndpoint = `https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/buscar/2024/${locationCode}/2045202024/candidato/${candidate.id}`;
+                    try {
+                        const detailedResponse = await fetch(detailedEndpoint);
+                        const detailedData = await detailedResponse.json();
+
+                        const deputyCandidates = detailedData.vices ? detailedData.vices.map(node => `${node.nm_URNA} (${node.sg_PARTIDO})`).join(', ') : '';
+                        if (deputyCandidates) {
+                            const deputyParagraph = document.createElement('p');
+                            deputyParagraph.className = 'candidate__deputy';
+                            deputyParagraph.textContent = `Vice: ${deputyCandidates}`;
+                            subListItem.appendChild(deputyParagraph);
+                        }
+                    } catch (error) {
+                        console.error("Erro ao buscar detalhes dos candidatos:", error);
+                        alert("Ocorreu um erro ao buscar detalhes dos candidatos. Por favor, tente novamente.");
+                    }
+
                     subList.appendChild(subListItem);
-                });
+                }
                 listItem.appendChild(subList);
             }
 
@@ -121,14 +142,16 @@ async function fetchCandidates(selectedState, cities) {
         // Oculta o loader e ativa o checkbox após o processamento
         document.getElementById('loader').style.display = 'none';
         document.getElementById('filterCheckbox').disabled = false;
+        cityCandidatesList.style.display = 'block';
     }
 }
 
 function applyFilter(isChecked) {
     const cityCandidatesList = document.getElementById('cityCandidatesList');
     const listItems = cityCandidatesList.getElementsByTagName('li');
+
     for (const item of listItems) {
-        if (isChecked && !item.classList.contains('single-candidate')) {
+        if (isChecked && !item.classList.contains('single-candidate') && !item.classList.contains('candidate')) {
             item.classList.add('hidden');
         } else {
             item.classList.remove('hidden');
