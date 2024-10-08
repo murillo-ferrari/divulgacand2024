@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Candidatos</title>
+    <title>Resultados Eleição 2024</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div class="candidatesPerCity">
-        <h1>Consulta de Candidatos por Estado e Cidade</h1>
+    <div class="resultPerCity">
+        <h1>Resultados Eleição 2024</h1>
         <label for="ufSelect">Selecione o Estado:</label>
         <select id="ufSelect">
             <option value="">Escolha um estado</option>
         </select>
         <select id="citySelect">
             <option value="">Selecione uma cidade</option>
-          </select>
-          
-          <ul id="cityCandidatesList"></ul>
-          <div id="loader" style="display: none;">Loading...</div>
-          <input type="checkbox" id="filterCheckbox"> Filtrar cidades com um único candidato
-    </div>
+        </select>
 
-    <script src="scripts.js"></script>
+        <ul id="cityCandidatesList"></ul>
+        <div id="loader" style="display: none;">Loading...</div>
+        <input type="checkbox" id="filterCheckbox">
+    </div>
+    <div id="resultados"></div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
