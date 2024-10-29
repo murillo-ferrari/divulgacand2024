@@ -1,0 +1,716 @@
+{
+  "13730": [
+    {
+      "id": 60002180687,
+      "nomeUrna": "CATANHO",
+      "numero": 13,
+      "partido": "PT"
+    },
+    {
+      "id": 60002309363,
+      "nomeUrna": "NAUMI AMORIM",
+      "numero": 55,
+      "partido": "PSD"
+    }
+  ],
+  "13897": [
+    {
+      "id": 60002029263,
+      "nomeUrna": "ANDRÉ FERNANDES",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 60002129518,
+      "nomeUrna": "EVANDRO LEITÃO",
+      "numero": 13,
+      "partido": "PT"
+    }
+  ],
+  "17612": [
+    {
+      "id": 200002110390,
+      "nomeUrna": "NATÁLIA BONAVIDES",
+      "numero": 13,
+      "partido": "PT"
+    },
+    {
+      "id": 200002186707,
+      "nomeUrna": "PAULINHO FREIRE",
+      "numero": 44,
+      "partido": "UNIÃO"
+    }
+  ],
+  "19810": [
+    {
+      "id": 150002201749,
+      "nomeUrna": "BRUNO CUNHA LIMA",
+      "numero": 44,
+      "partido": "UNIÃO"
+    },
+    {
+      "id": 150002033836,
+      "nomeUrna": "DR JHONY",
+      "numero": 40,
+      "partido": "PSB"
+    }
+  ],
+  "20516": [
+    {
+      "id": 150002036085,
+      "nomeUrna": "CICERO LUCENA",
+      "numero": 11,
+      "partido": "PP"
+    },
+    {
+      "id": 150001998778,
+      "nomeUrna": "MARCELO QUEIROGA",
+      "numero": 22,
+      "partido": "PL"
+    }
+  ],
+  "24910": [
+    {
+      "id": 170001959444,
+      "nomeUrna": "MIRELLA",
+      "numero": 55,
+      "partido": "PSD"
+    },
+    {
+      "id": 170002095626,
+      "nomeUrna": "VINICIUS CASTELLO",
+      "numero": 13,
+      "partido": "PT"
+    }
+  ],
+  "25135": [
+    {
+      "id": 170002082118,
+      "nomeUrna": "JUNIOR MATUTO",
+      "numero": 40,
+      "partido": "PSB"
+    },
+    {
+      "id": 170002082073,
+      "nomeUrna": "RAMOS",
+      "numero": 45,
+      "partido": "PSDB"
+    }
+  ],
+  "31054": [
+    {
+      "id": 260001926362,
+      "nomeUrna": "EMILIA CORREA",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 260002060001,
+      "nomeUrna": "LUIZ ROBERTO",
+      "numero": 12,
+      "partido": "PDT"
+    }
+  ],
+  "34134": [
+    {
+      "id": 50001941127,
+      "nomeUrna": "CAETANO",
+      "numero": 13,
+      "partido": "PT"
+    },
+    {
+      "id": 50001886830,
+      "nomeUrna": "FLÁVIO",
+      "numero": 44,
+      "partido": "UNIÃO"
+    }
+  ],
+  "41238": [
+    {
+      "id": 130002255952,
+      "nomeUrna": "BRUNO ENGLER",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 130001975610,
+      "nomeUrna": "FUAD NOMAN",
+      "numero": 55,
+      "partido": "PSD"
+    }
+  ],
+  "54011": [
+    {
+      "id": 130002181548,
+      "nomeUrna": "ELISA ARAÚJO",
+      "numero": 55,
+      "partido": "PSD"
+    },
+    {
+      "id": 130002072776,
+      "nomeUrna": "TONY CARLOS",
+      "numero": 15,
+      "partido": "MDB"
+    }
+  ],
+  "56995": [
+    {
+      "id": 80002286239,
+      "nomeUrna": "PABLO MURIBECA",
+      "numero": 10,
+      "partido": "REPUBLICANOS"
+    },
+    {
+      "id": 80002165282,
+      "nomeUrna": "WEVERSON MEIRELES",
+      "numero": 12,
+      "partido": "PDT"
+    }
+  ],
+  "58653": [
+    {
+      "id": 190001927354,
+      "nomeUrna": "CARLOS JORDY",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 190001901706,
+      "nomeUrna": "RODRIGO NEVES",
+      "numero": 12,
+      "partido": "PDT"
+    }
+  ],
+  "58777": [
+    {
+      "id": 190001976996,
+      "nomeUrna": "HINGO HAMMES",
+      "numero": 11,
+      "partido": "PP"
+    },
+    {
+      "id": 190002076543,
+      "nomeUrna": "YURI",
+      "numero": 50,
+      "partido": "PSOL"
+    }
+  ],
+  "62138": [
+    {
+      "id": 250002232227,
+      "nomeUrna": "BETO PITERI",
+      "numero": 10,
+      "partido": "REPUBLICANOS"
+    },
+    {
+      "id": 250002023473,
+      "nomeUrna": "GIL ARANTES",
+      "numero": 44,
+      "partido": "UNIÃO"
+    }
+  ],
+  "63770": [
+    {
+      "id": 250002047349,
+      "nomeUrna": "FILIPPI",
+      "numero": 13,
+      "partido": "PT"
+    },
+    {
+      "id": 250001950428,
+      "nomeUrna": "TAKA YAMAUCHI",
+      "numero": 15,
+      "partido": "MDB"
+    }
+  ],
+  "64254": [
+    {
+      "id": 250001970516,
+      "nomeUrna": "ALEXANDRE FERREIRA",
+      "numero": 15,
+      "partido": "MDB"
+    },
+    {
+      "id": 250002157794,
+      "nomeUrna": "JOÃO ROCHA",
+      "numero": 22,
+      "partido": "PL"
+    }
+  ],
+  "64750": [
+    {
+      "id": 250001974278,
+      "nomeUrna": "FARID MADI",
+      "numero": 20,
+      "partido": "PODE"
+    },
+    {
+      "id": 250002072842,
+      "nomeUrna": "RAPHAEL VITIELLO",
+      "numero": 11,
+      "partido": "PP"
+    }
+  ],
+  "64777": [
+    {
+      "id": 250002157464,
+      "nomeUrna": "ELÓI PIETÁ",
+      "numero": 77,
+      "partido": "SOLIDARIEDADE"
+    },
+    {
+      "id": 250001921615,
+      "nomeUrna": "LUCAS SANCHES",
+      "numero": 22,
+      "partido": "PL"
+    }
+  ],
+  "66192": [
+    {
+      "id": 250002117767,
+      "nomeUrna": "GUSTAVO MARTINELLI",
+      "numero": 44,
+      "partido": "UNIÃO"
+    },
+    {
+      "id": 250001980609,
+      "nomeUrna": "PARIMOSCHI",
+      "numero": 22,
+      "partido": "PL"
+    }
+  ],
+  "66397": [
+    {
+      "id": 250001978762,
+      "nomeUrna": "BETINHO NEVES",
+      "numero": 15,
+      "partido": "MDB"
+    },
+    {
+      "id": 250002122394,
+      "nomeUrna": "MURILO FÉLIX",
+      "numero": 20,
+      "partido": "PODE"
+    }
+  ],
+  "66893": [
+    {
+      "id": 250002154440,
+      "nomeUrna": "ATILA",
+      "numero": 44,
+      "partido": "UNIÃO"
+    },
+    {
+      "id": 250001971533,
+      "nomeUrna": "MARCELO OLIVEIRA",
+      "numero": 13,
+      "partido": "PT"
+    }
+  ],
+  "68756": [
+    {
+      "id": 250002204072,
+      "nomeUrna": "BARJAS NEGRI",
+      "numero": 45,
+      "partido": "PSDB"
+    },
+    {
+      "id": 250001962566,
+      "nomeUrna": "HELINHO ZANATTA",
+      "numero": 55,
+      "partido": "PSD"
+    }
+  ],
+  "69698": [
+    {
+      "id": 250001909045,
+      "nomeUrna": "MARCO AURELIO",
+      "numero": 30,
+      "partido": "NOVO"
+    },
+    {
+      "id": 250002068131,
+      "nomeUrna": "RICARDO SILVA",
+      "numero": 55,
+      "partido": "PSD"
+    }
+  ],
+  "70718": [
+    {
+      "id": 250002192300,
+      "nomeUrna": "ROGÉRIO SANTOS",
+      "numero": 10,
+      "partido": "REPUBLICANOS"
+    },
+    {
+      "id": 250002256485,
+      "nomeUrna": "ROSANA VALLE",
+      "numero": 22,
+      "partido": "PL"
+    }
+  ],
+  "70750": [
+    {
+      "id": 250002045641,
+      "nomeUrna": "ALEX MANENTE",
+      "numero": 23,
+      "partido": "CIDADANIA"
+    },
+    {
+      "id": 250002152251,
+      "nomeUrna": "MARCELO LIMA",
+      "numero": 20,
+      "partido": "PODE"
+    }
+  ],
+  "70971": [
+    {
+      "id": 250002140911,
+      "nomeUrna": "CORONEL FABIO CANDIDO",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 250001963612,
+      "nomeUrna": "ITAMAR",
+      "numero": 15,
+      "partido": "MDB"
+    }
+  ],
+  "70998": [
+    {
+      "id": 250001946210,
+      "nomeUrna": "ANDERSON",
+      "numero": 55,
+      "partido": "PSD"
+    },
+    {
+      "id": 250002015688,
+      "nomeUrna": "EDUARDO CURY",
+      "numero": 22,
+      "partido": "PL"
+    }
+  ],
+  "71072": [
+    {
+      "id": 250001926547,
+      "nomeUrna": "GUILHERME BOULOS",
+      "numero": 50,
+      "partido": "PSOL"
+    },
+    {
+      "id": 250002098117,
+      "nomeUrna": "RICARDO NUNES",
+      "numero": 15,
+      "partido": "MDB"
+    }
+  ],
+  "71498": [
+    {
+      "id": 250001953267,
+      "nomeUrna": "HENRIQUE DO PARAÍSO",
+      "numero": 10,
+      "partido": "REPUBLICANOS"
+    },
+    {
+      "id": 250001953548,
+      "nomeUrna": "WILLIAN SOUZA",
+      "numero": 13,
+      "partido": "PT"
+    }
+  ],
+  "71579": [
+    {
+      "id": 250002059548,
+      "nomeUrna": "APRIGIO",
+      "numero": 20,
+      "partido": "PODE"
+    },
+    {
+      "id": 250001995016,
+      "nomeUrna": "ENGENHEIRO DANIEL",
+      "numero": 44,
+      "partido": "UNIÃO"
+    }
+  ],
+  "71838": [
+    {
+      "id": 250001890446,
+      "nomeUrna": "ORTIZ JUNIOR",
+      "numero": 10,
+      "partido": "REPUBLICANOS"
+    },
+    {
+      "id": 250001928721,
+      "nomeUrna": "SERGIO VICTOR",
+      "numero": 30,
+      "partido": "NOVO"
+    }
+  ],
+  "75353": [
+    {
+      "id": 160002350673,
+      "nomeUrna": "CRISTINA GRAEML",
+      "numero": 35,
+      "partido": "PMB"
+    },
+    {
+      "id": 160001990123,
+      "nomeUrna": "EDUARDO PIMENTEL",
+      "numero": 55,
+      "partido": "PSD"
+    }
+  ],
+  "76678": [
+    {
+      "id": 160002238306,
+      "nomeUrna": "PROFESSORA MARIA TEREZA",
+      "numero": 11,
+      "partido": "PP"
+    },
+    {
+      "id": 160002149971,
+      "nomeUrna": "TIAGO AMARAL",
+      "numero": 55,
+      "partido": "PSD"
+    }
+  ],
+  "77771": [
+    {
+      "id": 160002112204,
+      "nomeUrna": "ELIZABETH SCHMIDT",
+      "numero": 44,
+      "partido": "UNIÃO"
+    },
+    {
+      "id": 160001969118,
+      "nomeUrna": "MABEL CANTO",
+      "numero": 45,
+      "partido": "PSDB"
+    }
+  ],
+  "85898": [
+    {
+      "id": 210002225770,
+      "nomeUrna": "AIRTON SOUZA",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 210001982282,
+      "nomeUrna": "JAIRO JORGE",
+      "numero": 55,
+      "partido": "PSD"
+    }
+  ],
+  "85995": [
+    {
+      "id": 210002216782,
+      "nomeUrna": "ADILÓ",
+      "numero": 45,
+      "partido": "PSDB"
+    },
+    {
+      "id": 210001963268,
+      "nomeUrna": "SCALCO",
+      "numero": 22,
+      "partido": "PL"
+    }
+  ],
+  "87912": [
+    {
+      "id": 210002001174,
+      "nomeUrna": "MARCIANO PERONDI",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 210002068620,
+      "nomeUrna": "MARRONI",
+      "numero": 13,
+      "partido": "PT"
+    }
+  ],
+  "88013": [
+    {
+      "id": 210002062507,
+      "nomeUrna": "MARIA DO ROSÁRIO",
+      "numero": 13,
+      "partido": "PT"
+    },
+    {
+      "id": 210002029933,
+      "nomeUrna": "SEBASTIÃO MELO",
+      "numero": 15,
+      "partido": "MDB"
+    }
+  ],
+  "88412": [
+    {
+      "id": 210002189747,
+      "nomeUrna": "RODRIGO DECIMO",
+      "numero": 45,
+      "partido": "PSDB"
+    },
+    {
+      "id": 210001964902,
+      "nomeUrna": "VALDECI OLIVEIRA",
+      "numero": 13,
+      "partido": "PT"
+    }
+  ],
+  "90514": [
+    {
+      "id": 120002167893,
+      "nomeUrna": "ADRIANE LOPES",
+      "numero": 11,
+      "partido": "PP"
+    },
+    {
+      "id": 120002225413,
+      "nomeUrna": "ROSE MODESTO",
+      "numero": 44,
+      "partido": "UNIÃO"
+    }
+  ],
+  "90670": [
+    {
+      "id": 110002118922,
+      "nomeUrna": "ABILIO",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 110002013954,
+      "nomeUrna": "LÚDIO",
+      "numero": 13,
+      "partido": "PT"
+    }
+  ],
+  "92215": [
+    {
+      "id": 90002074092,
+      "nomeUrna": "ANTONIO GOMIDE",
+      "numero": 13,
+      "partido": "PT"
+    },
+    {
+      "id": 90002213855,
+      "nomeUrna": "MARCIO CORREA",
+      "numero": 22,
+      "partido": "PL"
+    }
+  ],
+  "92274": [
+    {
+      "id": 90001991831,
+      "nomeUrna": "LEANDRO VILELA",
+      "numero": 15,
+      "partido": "MDB"
+    },
+    {
+      "id": 90001991809,
+      "nomeUrna": "PROFESSOR ALCIDES",
+      "numero": 22,
+      "partido": "PL"
+    }
+  ],
+  "93734": [
+    {
+      "id": 90002008544,
+      "nomeUrna": "FRED RODRIGUES",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 90002002544,
+      "nomeUrna": "MABEL",
+      "numero": 44,
+      "partido": "UNIÃO"
+    }
+  ],
+  "02550": [
+    {
+      "id": 40002142182,
+      "nomeUrna": "CAPITÃO ALBERTO NETO",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 40001941186,
+      "nomeUrna": "DAVID ALMEIDA",
+      "numero": 70,
+      "partido": "AVANTE"
+    }
+  ],
+  "08036": [
+    {
+      "id": 100002287396,
+      "nomeUrna": "MARIANA CARVALHO",
+      "numero": 10,
+      "partido": "REPUBLICANOS"
+    },
+    {
+      "id": 100002337183,
+      "nomeUrna": "RILDO AMARAL",
+      "numero": 11,
+      "partido": "PP"
+    }
+  ],
+  "04278": [
+    {
+      "id": 140001951566,
+      "nomeUrna": "DELEGADO EDER MAURO",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 140002181381,
+      "nomeUrna": "IGOR",
+      "numero": 15,
+      "partido": "MDB"
+    }
+  ],
+  "05355": [
+    {
+      "id": 140002112696,
+      "nomeUrna": "JK DO POVÃO",
+      "numero": 22,
+      "partido": "PL"
+    },
+    {
+      "id": 140002112203,
+      "nomeUrna": "ZÉ MARIA TAPAJÓS",
+      "numero": 15,
+      "partido": "MDB"
+    }
+  ],
+  "00035": [
+    {
+      "id": 220002250040,
+      "nomeUrna": "LÉO",
+      "numero": 20,
+      "partido": "PODE"
+    },
+    {
+      "id": 220001919960,
+      "nomeUrna": "MARIANA CARVALHO",
+      "numero": 44,
+      "partido": "UNIÃO"
+    }
+  ],
+  "73440": [
+    {
+      "id": 270002318894,
+      "nomeUrna": "EDUARDO SIQUEIRA CAMPOS",
+      "numero": 20,
+      "partido": "PODE"
+    },
+    {
+      "id": 270001957302,
+      "nomeUrna": "JANAD VALCARI",
+      "numero": 22,
+      "partido": "PL"
+    }
+  ]
+}

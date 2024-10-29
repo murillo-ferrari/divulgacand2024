@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-container {
+    width: 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px 0;
+    font-size: 16px;
+}

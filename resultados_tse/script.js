@@ -86,7 +86,7 @@ async function fetchCandidatesForCity(cityCode, cityName) {
   cityCode = cityCode.padStart(5, "0");
   const selectedUF = document.getElementById("ufSelect").value.toLowerCase();
   const endpoint = `https://resultados.tse.jus.br/oficial/ele2024/619/dados/${selectedUF}/${selectedUF}${cityCode}-c0011-e000619-u.json`;
-  console.log(cityName, endpoint); // Debugging output
+  console.log(`${cityName}: `, endpoint); // Debugging output
 
   await fetchAndDisplayCandidates(endpoint);
 

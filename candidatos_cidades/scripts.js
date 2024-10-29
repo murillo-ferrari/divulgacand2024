@@ -63,21 +63,21 @@ function populateCityDropdown(selectedState, cities) {
 
   citySelect.addEventListener("change", () => {
     const selectedCityCode = citySelect.value;
-    const selectedCityName = citySelect.options[citySelect.selectedIndex].text; // Get the city name
+    const selectedCityName = citySelect.options[citySelect.selectedIndex].text;
 
     if (selectedCityCode) {
-      fetchCandidatesForCity(selectedCityCode, selectedCityName); // Pass cityName here
+      fetchCandidatesForCity(selectedCityCode, selectedCityName); 
     }
   });
 }
 
 citySelect.addEventListener("change", () => {
   const selectedCityCode = citySelect.value;
-  const selectedCityName = citySelect.options[citySelect.selectedIndex].text; // Get the city name
-  const selectedUF = document.getElementById("ufSelect").value; // Get the selected UF
+  const selectedCityName = citySelect.options[citySelect.selectedIndex].text;
+  const selectedUF = document.getElementById("ufSelect").value;
 
   if (selectedCityCode) {
-    fetchCandidatesForCity(selectedCityCode, selectedCityName, selectedUF); // Pass selectedUF here
+    fetchCandidatesForCity(selectedCityCode, selectedCityName, selectedUF);
   }
 });
 
@@ -93,9 +93,7 @@ async function fetchCandidatesForCity(cityCode, cityName, selectedUF) {
     cityCandidatesList.innerHTML = "";
     cityCandidatesList.style.display = "none";
 
-    while (cityCode.length < 5) {
-      cityCode = "0" + cityCode;
-    }
+    cityCode = cityCode.padStart(5, "0");
 
     const endpoint = `https://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/listar/2024/${cityCode}/2045202024/13/candidatos`;
 
